@@ -19,12 +19,15 @@ router.get("/", function(req, res) {
 //ROUTING TO THE CREATION OF A BURGER
 
 router.post("/", function(req, res) {
-  console.log(req.body.name);
-    burger.create(req.body.name, function(data) {
+
+  //DEFINED
+  // console.log(req.body.burger);
+
+    burger.create(req.body.burger, function(data) {
       var hbsObject = {
         burgers: data
       };
-      console.log(hbsObject);
+      // console.log(hbsObject);
       res.render("index", hbsObject);
     });
   });

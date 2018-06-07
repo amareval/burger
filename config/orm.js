@@ -1,7 +1,7 @@
 // Import MySQL connection.
 var connection = require("./connection.js");
 
-
+var tableName = "burgers"
 
 var orm = {
     // Here our ORM is creating a simple method for performing a query of the entire table.
@@ -17,19 +17,23 @@ var orm = {
     // Here our ORM is creating a simple method for adding characters to the database
     // Effectively, the ORM's simple addCharacter method translates into a more complex SQL INSERT statement.
     addBurger: function(tableName, name, cb) {
-      var queryString = "INSERT INTO " + tableName;
+      // var queryString = "INSERT INTO " + tableName;
 
       // var routeName = burgers.name.replace(/\s+/g, "").toLowerCase();
       // console.log(routeName);
-  
       var queryString = "INSERT INTO " + tableName + " (burger_name) VALUES (?)";
-      console.log(name);
-  
-      connection.query(queryString, [name], function(
-        err,
-        result
-      ) {
-        console.log(result)
+      
+//{ Error: ER_WRONG_VALUE_COUNT_ON_ROW: Column count doesn't match value count at row 1
+
+      connection.query(queryString, [name], function(err, result) {
+        if (err) {
+console.log(err);
+        }
+        //UNDEFINED------------------------
+        // cb(result);
+        console.log(result);
+        cb(result);
+
       });
     },
         // NEED TO UPDATE THIS , NOT CORRECT
