@@ -2,14 +2,14 @@
 var orm = require("../config/orm.js");
 
 var burgers = {
-    allBurgers: function(cb) {
-    orm.allBurgers("burgers", function(res) {
-      cb(res);
-    });
+  read: function(cb) {
+      orm.allBurgers("burgers", function(res) {
+        cb(res);
+      });
   },
   // The variables cols and vals are arrays.
-  create: function(tableName, name, cb) {
-    orm.create("burgers", name, function(res) {
+  create: function(name, cb) {
+    orm.addBurger("burgers", name, function(res) {
       cb(res);
     });
   },

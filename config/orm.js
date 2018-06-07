@@ -19,16 +19,17 @@ var orm = {
     addBurger: function(tableName, name, cb) {
       var queryString = "INSERT INTO " + tableName;
 
-      var routeName = character.name.replace(/\s+/g, "").toLowerCase();
-      console.log(routeName);
+      // var routeName = burgers.name.replace(/\s+/g, "").toLowerCase();
+      // console.log(routeName);
   
-      var s = "INSERT INTO " + tableName + " (burger_name) VALUES (?)";
+      var queryString = "INSERT INTO " + tableName + " (burger_name) VALUES (?)";
+      console.log(name);
   
-      connection.query(s, [name], function(
+      connection.query(queryString, [name], function(
         err,
         result
       ) {
-        cb(result);
+        console.log(result)
       });
     },
         // NEED TO UPDATE THIS , NOT CORRECT
