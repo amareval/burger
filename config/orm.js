@@ -29,26 +29,25 @@ var orm = {
         if (err) {
 console.log(err);
         }
-        //UNDEFINED------------------------
-        // cb(result);
+      //After the new burger is added the values taht show are blank?
         console.log(result);
         cb(result);
 
       });
     },
         // NEED TO UPDATE THIS , NOT CORRECT
-     update: function(tableName, devoured, cb) {
-    var queryString = "UPDATE " + tableName;
+     eatBurger: function(tableName, condition, cb) {
+    var queryString = "UPDATE " + tableName + " SET false WHERE id = ?"
 
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
+    // UPDATE products SET ? WHERE ?
 
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
+    // console.log(queryString);
+    // console.log(condition);
+
+
+    connection.query(queryString, [condition], function(err, result) {
       if (err) {
-        throw err;
+        // console.log(err)
       }
 
       cb(result);

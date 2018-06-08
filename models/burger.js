@@ -14,8 +14,8 @@ var burgers = {
     });
   },
   //NEED TO WORK ON THE UPDATE
-  update: function(name, cb) {
-    orm.update("cats", objColVals, condition, function(res) {
+  update: function(condition, cb) {
+    orm.eatBurger("burgers", condition, function(res) {
       cb(res);
     });
   }
